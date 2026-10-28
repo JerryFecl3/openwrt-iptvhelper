@@ -9,17 +9,17 @@ p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
 class PolicyTests(unittest.TestCase):
     def setUp(self):
         self.name='iptv'
-        self.st={'up':True,'l3_device':'eth3','ipv4-address':[{'address':'10.128.158.22','mask':20}],
-                 'inactive':{'route':[{'mask':0,'nexthop':'10.128.144.1'}]}}
+        self.st={'up':True,'l3_device':'eth3','ipv4-address':[{'address':'192.0.2.22','mask':24}],
+                 'inactive':{'route':[{'mask':0,'nexthop':'192.0.2.1'}]}}
         self.rules=[{'priority':100,'oif':'eth3','table':'42420'},{'priority':101,'oif':'eth3','action':'unreachable'}]
-        self.routes=[{'dst':'10.128.144.0/20','dev':'eth3','protocol':'242','metric':10},
-                     {'dst':'default','gateway':'10.128.144.1','dev':'eth3','protocol':'242','metric':10},
+        self.routes=[{'dst':'192.0.2.0/24','dev':'eth3','protocol':'242','metric':10},
+                     {'dst':'default','gateway':'192.0.2.1','dev':'eth3','protocol':'242','metric':10},
                      {'dst':'default','type':'unreachable','protocol':'242','metric':42760}]
         self.writes=[]
         self.saved=[]
     def run_cmd(self,*args):
         if args==('uci','-q','get','iptvhelper.main.route_table'):return '42420'
-        if args==('ip','-4','route','show','table','42420'):return 'default via 10.128.144.1 dev eth3'
+        if args==('ip','-4','route','show','table','42420'):return 'default via 192.0.2.1 dev eth3'
         if args[:3]==('ubus','call','uci'):return json.dumps({'values':{'hostname':'test'}})
         if args[:3]==('ubus','call','network.device'):return json.dumps({'macaddr':'02:00:00:00:00:01'})
         if args==('uci','-q','get','iptvhelper.main.interface'):return self.name
@@ -66,10 +66,10 @@ class PolicyTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):self.reconcile()
         self.assertEqual(self.writes,[])
     def test_gateway_change_replaces_old_route(self):
-        self.st['inactive']['route'][0]['nexthop']='10.128.144.2'
+        self.st['inactive']['route'][0]['nexthop']='192.0.2.2'
         result=self.reconcile()
-        self.assertIn(('default','10.128.144.2'),result['routes'])
-        self.assertTrue(any('replace' in c and '10.128.144.2' in c for c in self.writes))
+        self.assertIn(('default','192.0.2.2'),result['routes'])
+        self.assertTrue(any('replace' in c and '192.0.2.2' in c for c in self.writes))
     def test_cold_start_without_table(self):
         import subprocess
         self.rules=[]

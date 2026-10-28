@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 PKG_NAME:=luci-app-iptvhelper
-PKG_VERSION:=0.4.0
-PKG_RELEASE:=6
+PKG_VERSION:=0.4.1
+PKG_RELEASE:=1
 PKG_LICENSE:=MIT
 PKGARCH:=all
 include $(INCLUDE_DIR)/package.mk

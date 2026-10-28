@@ -2,7 +2,7 @@
 
 IPTV 助手：平台认证与会话管理、频道及节目单采集、SQLite 存储、M3U/XMLTV 发布，以及 LuCI 状态与配置页面。
 
-当前源码对应 `luci-app-iptvhelper 0.4.0-r6`。适配器已在辽宁联通华为平台及 OpenWrt 25.12 系列 x86_64 环境验证；不是通用的所有运营商客户端。
+当前源码对应 `luci-app-iptvhelper 0.4.1-r1`。适配器已在辽宁联通华为平台及 OpenWrt 25.12 系列 x86_64 环境验证；不是通用的所有运营商客户端。
 
 ## 两个独立项目
 
@@ -19,11 +19,14 @@ iptv-client/    平台认证、业务发现、频道和 EPG 解析组件及测�
 
 先安装与固件架构匹配的官方 rtp2httpd 包。本项目依赖它的可执行文件，不内置第三方二进制，也不要求安装它的 LuCI 插件。
 
+签名包、公钥和软件源配置见 [安装与发布说明](docs/publishing.md)。配置后运行：
+
 ```sh
-apk add --allow-untrusted /tmp/luci-app-iptvhelper-0.4.0-r6.apk
+apk update
+apk add luci-app-iptvhelper
 ```
 
-其余依赖见 `openwrt-iptv/dependencies.txt`。开发包未签名时才需要 `--allow-untrusted`。源码仓库不携带 APK；旧安装包不代表当前仓库经过重新构建。
+其余依赖见 `openwrt-iptv/dependencies.txt`。发布软件源不包含 rtp2httpd，需先安装上游包。升级会停止助手任务并恢复原启停状态，可能短暂中断媒体转发；不重启网络接口。
 
 首次安装整体停用。进入 LuCI 的 **IPTV 助手**：
 
@@ -73,7 +76,7 @@ python openwrt-iptv/build.py --archive
 APK_MKPKG=/path/to/apk sh openwrt-iptv/mkpkg.sh openwrt-iptv/build/root.tar.gz
 ```
 
-输出 `/tmp/luci-app-iptvhelper-0.4.0-r6.apk`。也提供 SDK Makefile：先生成 `build/root`，再将完整 `openwrt-iptv` 包目录放入 SDK 并编译。SDK 路径尚需独立构建验收。
+输出 `/tmp/luci-app-iptvhelper-0.4.1-r1.apk`。也提供 SDK Makefile：先生成 `build/root`，再将完整 `openwrt-iptv` 包目录放入 SDK 并编译。SDK 路径尚需独立构建验收。
 
 测试不能替代 OpenWrt 上的锁、服务生命周期、真实认证、播放和重启验收。Windows 测试对部分 Linux 能力使用模拟。
 
