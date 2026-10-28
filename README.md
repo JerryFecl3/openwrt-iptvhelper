@@ -4,6 +4,32 @@ IPTV 助手：平台认证与会话管理、频道及节目单采集、SQLite �
 
 当前源码对应 `luci-app-iptvhelper 0.4.1-r1`。适配器已在辽宁联通华为平台及 OpenWrt 25.12 系列 x86_64 环境验证；不是通用的所有运营商客户端。
 
+## 界面预览
+
+以下图片经过脱敏处理，账号、专网 IP、MAC、平台地址及主机名已遮盖；媒体服务地址保留，用于展示访问入口。
+
+### 状态总览
+
+![IPTV 助手状态总览](docs/screenshots/overview.png)
+
+### 网络状态
+
+![IPTV 专网接入与专用路由](docs/screenshots/network.png)
+
+### 平台状态
+
+![平台认证与业务会话](docs/screenshots/platform.png)
+
+### 媒体状态
+
+![媒体采集与服务](docs/screenshots/media.png)
+
+### 网页播放器（rtp2httpd）
+
+下图为 [rtp2httpd](https://github.com/stackia/rtp2httpd) 提供的网页播放器，使用本助手采集整理的频道与节目单；播放器界面及播放能力来自 rtp2httpd。
+
+![rtp2httpd 网页播放器](docs/screenshots/player.png)
+
 ## 两个独立项目
 
 网络接入可使用另一个仓库 `openwrt-dhcpplus`。本项目只依赖已经可用的 IPTV 逻辑接口，不要求必须使用 DHCP+。
