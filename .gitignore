@@ -1,0 +1,13 @@
+**/build/
+**/dist/
+**/__pycache__/
+*.py[cod]
+.venv/
+*.apk
+*.ipk
+*.so
+*.pcap*
+*.db*
+*.sqlite*
+*.private.*
+.env*

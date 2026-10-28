@@ -1,0 +1,3 @@
+#!/bin/sh
+[ -n "$IPKG_INSTROOT" ] && exit 0
+exec /usr/bin/python3 /usr/lib/iptvhelper-app/lifecycle.py remove

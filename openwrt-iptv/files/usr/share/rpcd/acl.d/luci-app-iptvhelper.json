@@ -1,0 +1,1 @@
+{"luci-app-iptvhelper": {"description": "IPTV configuration and status", "read": {"uci": ["iptvhelper"], "ubus": {"iptvhelper": ["status"]}}, "write": {"uci": ["iptvhelper"], "ubus": {"iptvhelper": ["update", "enable", "disable"]}}}}

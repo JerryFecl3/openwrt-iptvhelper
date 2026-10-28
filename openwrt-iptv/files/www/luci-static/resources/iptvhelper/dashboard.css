@@ -1,0 +1,31 @@
+.iptvhelper{--ip-line:var(--border-color,#d6dce2);--ip-surface:var(--background-color-high,#fff);--ip-soft:var(--background-color-low,#f3f6f8);--ip-ink:var(--text-color,#263747);--ip-muted:var(--text-color-secondary,#596d7e);--ip-blue:#2479a9;color:var(--ip-ink)}
+.iptvhelper .ip-panel{padding:18px;border:1px solid var(--ip-line);border-radius:6px;background:var(--ip-surface);margin-bottom:16px}.iptvhelper .ip-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.iptvhelper h3{margin:0!important;font-size:16px}.iptvhelper .ip-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.iptvhelper dl{display:grid;grid-template-columns:minmax(90px,1fr) minmax(0,1.7fr);gap:9px 12px;margin:10px 0 0!important}.iptvhelper dt{color:var(--ip-muted)}.iptvhelper dd{margin:0;overflow-wrap:anywhere;white-space:pre-line}.iptvhelper .ip-muted{color:var(--ip-muted);font-size:13px}.iptvhelper .ip-badge{padding:4px 9px;border-radius:4px;background:var(--ip-soft);font-size:12px}.iptvhelper .ip-good{color:#187350}.iptvhelper .ip-warn{color:#925509}.iptvhelper .ip-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}.iptvhelper .ip-metrics strong{display:block;font-size:28px;font-variant-numeric:tabular-nums}.iptvhelper .ip-track{height:7px;border:0;background:var(--ip-soft);border-radius:4px;overflow:hidden;margin:14px 0}.iptvhelper .ip-track span{display:block;height:100%;background:var(--ip-blue)}.iptvhelper .ip-table{overflow-x:auto}.iptvhelper .ip-table td{overflow-wrap:anywhere;max-width:420px}.iptvhelper .ip-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.iptvhelper [hidden]{display:none!important}.iptvhelper .ip-error{margin:10px 0;padding:12px;background:var(--ip-soft);color:#a74e19}
+@media(prefers-color-scheme:dark){.iptvhelper{--ip-surface:var(--background-color-high,#242c36);--ip-soft:var(--background-color-low,#303b47);--ip-ink:var(--text-color,#e2e9ef);--ip-muted:var(--text-color-secondary,#b2bdc8);--ip-line:var(--border-color,#45515f);--ip-blue:#8bcaff}.iptvhelper .ip-good{color:#8cdbb6}.iptvhelper .ip-warn,.iptvhelper .ip-error{color:#efc07a}}
+@media(max-width:700px){.iptvhelper .ip-grid{grid-template-columns:1fr;gap:0}.iptvhelper .ip-panel{padding:13px}.iptvhelper .ip-metrics strong{font-size:23px}}
+
+.iptvhelper #iptvhelper-platform table{width:100%;table-layout:fixed;border-collapse:collapse}.iptvhelper #iptvhelper-platform th,.iptvhelper #iptvhelper-platform td{text-align:left;vertical-align:top;padding:4px 14px 4px 0;overflow-wrap:anywhere}.iptvhelper #iptvhelper-platform th:nth-child(1){width:18%}.iptvhelper #iptvhelper-platform th:nth-child(2){width:24%}.iptvhelper #iptvhelper-platform th:nth-child(3){width:58%}
+
+.iptvhelper .ip-tree-label{white-space:pre-wrap;font-family:monospace;overflow-wrap:anywhere}
+
+/* Keep native table columns aligned despite LuCI theme flex-table rules. */
+.iptvhelper .ip-table{margin-top:20px}
+.iptvhelper .ip-table table{display:table!important;width:100%;table-layout:fixed;border-collapse:collapse}
+.iptvhelper .ip-table thead{display:table-header-group!important}
+.iptvhelper .ip-table tbody{display:table-row-group!important}
+.iptvhelper .ip-table tr{display:table-row!important}
+.iptvhelper .ip-table th,.iptvhelper .ip-table td{display:table-cell!important;box-sizing:border-box;text-align:left;vertical-align:top;min-width:0;max-width:none}
+.iptvhelper #iptvhelper-platform table{min-width:640px}
+.iptvhelper #iptvhelper-platform th:nth-child(1),.iptvhelper #iptvhelper-platform td:nth-child(1){width:24%}
+.iptvhelper #iptvhelper-platform th:nth-child(2),.iptvhelper #iptvhelper-platform td:nth-child(2){width:24%}
+.iptvhelper #iptvhelper-platform th:nth-child(3),.iptvhelper #iptvhelper-platform td:nth-child(3){width:52%}
+
+.iptvhelper .ip-detail{margin-top:16px}.iptvhelper .ip-detail summary{color:var(--ip-blue);cursor:pointer}.iptvhelper #iptvhelper-publish th,.iptvhelper #iptvhelper-publish td{padding:9px 10px 9px 0;overflow-wrap:anywhere}.iptvhelper #iptvhelper-publish th:first-child{width:24%}.iptvhelper #iptvhelper-publish th:nth-child(2){width:22%}
+
+/* Inline actions must share the text baseline without enlarging status rows. */
+.iptvhelper dl{align-items:baseline}
+.iptvhelper dd .ip-actions{align-items:baseline;gap:4px 10px;white-space:normal}
+.iptvhelper dd .ip-actions>.cbi-button{box-sizing:border-box;display:inline-block;width:auto;min-width:0;min-height:0;height:auto;margin:0!important;padding:0 6px!important;font-size:12px!important;line-height:18px!important;vertical-align:baseline;white-space:nowrap}
+
+/* Overview spacing is controlled by the grid, without stacked panel margins. */
+.iptvhelper #iptvhelper-overview .ip-grid{row-gap:12px}
+.iptvhelper #iptvhelper-overview .ip-grid>.ip-panel{margin-bottom:0}

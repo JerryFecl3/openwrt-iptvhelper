@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+import json,subprocess,sys
+if len(sys.argv)>1 and sys.argv[1]=='list':
+    print(json.dumps({'status':{},'update':{},'enable':{},'disable':{}}))
+elif len(sys.argv)>2 and sys.argv[1]=='call' and sys.argv[2] in ('status','update','enable','disable'):
+    try:
+        print(subprocess.check_output(['/usr/bin/python3','/usr/lib/iptvhelper-app/app.py',sys.argv[2]],text=True,timeout=60))
+    except Exception:
+        print(json.dumps({'error':'backend_unavailable'}))
+

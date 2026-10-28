@@ -1,0 +1,6 @@
+#!/bin/sh
+# Reconcile on any interface event: the previous selected interface may be
+# disappearing while the new one has not yet acquired an l3_device.
+case "$ACTION" in
+    ifup|ifupdate|ifdown) /usr/bin/python3 /usr/lib/iptvhelper-app/policy.py ;;
+esac

@@ -1,0 +1,24 @@
+{
+  "device_fields": {
+    "Lang": "",
+    "SupportHD": "1",
+    "STBType": "B860AV1.1",
+    "STBVersion": "V80711325.0012",
+    "conntype": "dhcp",
+    "UserField": "1"
+  },
+  "request_interval": 0.75,
+  "session_max_age": 86400,
+  "adapter": {
+    "epg_path": "default/en/datajsp/tvod_IchanListData-hd3.jsp",
+    "logo_page": "default/en/tj_pinterest/hk-channellist.jsp",
+    "catchup_path": "default/en/au_ReviewOrSubscribe.jsp",
+    "live_logo_page": "default/en/tj_pinterest/zb-channellist.jsp"
+  },
+  "discovery": [
+    {
+      "network": "10.15.250.0/24",
+      "port": 33200
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"admin/services/iptvhelper":{"title":"IPTV 助手","order":65,"action":{"type":"view","path":"iptvhelper/main"},"depends":{"acl":["luci-app-iptvhelper"],"uci":{"iptvhelper":true}}}}

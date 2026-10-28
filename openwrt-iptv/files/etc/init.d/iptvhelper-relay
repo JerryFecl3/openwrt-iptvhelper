@@ -1,0 +1,16 @@
+#!/bin/sh /etc/rc.common
+START=99
+USE_PROCD=1
+start_service() {
+    [ "$(uci -q get iptvhelper.main.service_enabled)" = "0" ] && return 0
+    local args
+    args="$(/usr/bin/python3 /usr/lib/iptvhelper-app/relay.py arguments)" || return 1
+    procd_open_instance assistant
+    procd_set_param command /usr/bin/rtp2httpd
+    for arg in $args; do procd_append_param command "$arg"; done
+    procd_set_param pidfile /var/run/iptvhelper-relay.pid
+    procd_set_param respawn
+    procd_set_param stdout 1
+    procd_set_param stderr 1
+    procd_close_instance
+}
