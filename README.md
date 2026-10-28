@@ -15,9 +15,17 @@ iptv-client/    平台认证、业务发现、频道和 EPG 解析组件及测�
 
 两部分源码在本仓库中完整保留；不需要研究工作区、机顶盒备份或相邻的外部仓库。
 
+## rtp2httpd 与致谢
+
+感谢 [rtp2httpd](https://github.com/stackia/rtp2httpd) 的作者及贡献者。本项目的流媒体转发、网页播放器，以及播放列表和节目单的 HTTP 服务，基于 rtp2httpd 提供的能力实现。
+
+IPTV 助手负责平台认证、业务发现、频道与节目单采集及数据整理；rtp2httpd 负责实际播放流量和媒体服务。网页播放器与流媒体转发能力来自 rtp2httpd，并非本项目自行实现。
+
+可根据使用需求前往 [rtp2httpd 项目](https://github.com/stackia/rtp2httpd) 查看功能与安装说明，并从其 [Releases](https://github.com/stackia/rtp2httpd/releases) 选择匹配固件版本、架构和包管理器的安装包。需要独立使用流媒体转发或网页播放器时，也可以直接使用 rtp2httpd。
+
 ## 安装与配置
 
-先安装与固件架构匹配的官方 rtp2httpd 包。本项目依赖它的可执行文件，不内置第三方二进制，也不要求安装它的 LuCI 插件。
+当前发布的 IPTV 助手安装包将 rtp2httpd 声明为必需依赖；使用本插件时需先安装上游提供的匹配版本。助手只依赖其可执行文件，不内置第三方二进制；rtp2httpd 的 LuCI 插件可按需安装，不是本助手的必需依赖。
 
 签名包、公钥和软件源配置见 [安装与发布说明](docs/publishing.md)。配置后运行：
 
